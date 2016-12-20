@@ -1,0 +1,35 @@
+{
+  "name": "eslint-config-ssense",
+  "version": "0.0.0",
+  "description": "JavaScript code standards at SSENSE",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'module.exports = ' > index.js && js-yaml source/base.yaml >> index.js",
+    "prepublish": "npm run build",
+    "postversion": "git push && git push --tags && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SSENSE/eslint-config.git"
+  },
+  "keywords": [
+    "eslint",
+    "eslintconfig"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SSENSE/eslint-config/issues"
+  },
+  "homepage": "https://github.com/SSENSE/eslint-config#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "js-yaml": "^3.4.2"
+  },
+  "peerDependencies": {
+    "eslint": ">= 3",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-fp": "^2.2.0",
+    "babel-eslint": "^7.1.1"
+  }
+}
