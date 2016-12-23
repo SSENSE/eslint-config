@@ -233,7 +233,7 @@ const polygon = (height, width) => ({
 
 > delete is an operator to remove fields from an object or elements from an array. This purposely mutates data, which is not wanted when doing functional programming.
 
-Also, https://github.com/google/google-api-nodejs-client/issues/375[Avoid using delete operator]
+Further reading: https://github.com/google/google-api-nodejs-client/issues/375[Avoid using delete operator]
 
 #### Fail
 ```js
@@ -347,19 +347,14 @@ while (n < 100) {
   result.push(n)
   n *= 2
 }
-
-do {
-  result.push(n)
-  n *= 2
-} while (n < 100)
 ```
 #### Pass
 ```js
-const elements = [1, 2, 3]
+const xs = [1, 2, 3]
 
-elements.filter(element => element > 2)
+xs.filter(x => x > 2)
 
-elements.map(element => element * 10)
+xs.map(x => x * 10)
 
 const doubleBlast (n) =>
   n >= 100
