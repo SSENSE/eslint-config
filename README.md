@@ -29,6 +29,27 @@ JavaScript code standards at SSENSE
 
   Some languages treat single/double as different types (Java, Haskell, PureScript, ...), don't even have single quotes (Clojure), or idiomatically use double (HTML). It is therefore better (Assuming a polyglot programmer) for habit building and retention to use double quotes as well in JavaScript.
 
+1. `no-multiple-empty-lines`
+
+  Up to three allowed. Two empty lines are not enough to clearly partition major sections of a module (e.g. after all `import ...`).
+
+1. `import/no-namespace`
+
+  Yes.
+
+  ```
+  import * as Foo from 'bar'
+  ```
+  Is a misfeature of the new JS module syntax. Instead of relying on this we should always write modules that support:
+  ```
+  import Foo from 'bar'
+  ```
+  by aliasing our `export` with  `export default`.
+
+  * This is more like CommonJS which makes transition from `require` easier.
+  * This is simpler for developers because they have fewer options.
+  * This is easier to read; `* as ...` scattered multiple times throughout imports is noisy.
+
 
 ## Installation
 ```
