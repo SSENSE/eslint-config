@@ -1,7 +1,6 @@
 :toc: macro
 :toc-title:
 :toclevels: 99
-:numbered:
 
 # eslint-config-ssense
 
