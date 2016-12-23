@@ -28,7 +28,6 @@
     "eslint": ">= 3",
     "eslint-config-airbnb-base": "^11.0.0",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-fp": "^2.2.0",
-    "eslint-plugin-vue": "^1.0.0"
+    "eslint-plugin-fp": "^2.2.0"
   }
 }
