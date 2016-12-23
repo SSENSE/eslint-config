@@ -7,6 +7,9 @@
 
 JavaScript code standards at SSENSE
 
+toc::[]
+
+
 
 ## Installation
 ```
@@ -24,8 +27,6 @@ npm install --save-dev \
   eslint-plugin-vue
 ```
 
-
-toc::[]
 
 
 ## Rules
