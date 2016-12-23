@@ -107,13 +107,13 @@ Further reading +
 * http://inimino.org/~inimino/blog/javascript_semicolons[JavaScript Semicolon Insertion; Everything you need to know]
 * http://mislav.net/2010/05/semicolons/[Semicolons in JavaScript are optional]
 
-#**FAIL**
+**Fail**
 ```js
 it("foobar", () => {
   assert(1, foo(1));
 });
 ```
-#**PASS**
+**Pass**
 ```js
 it("foobar", () => {
   assert(1, foo(1))
@@ -126,14 +126,14 @@ Double. +
 
 Some languages treat single/double as different types (Java, Haskell, PureScript, ...), don't even have single quotes (Clojure), or idiomatically use double (HTML). It is therefore better (Assuming a polyglot programmer) for habit building and retention to use double quotes as well in JavaScript.
 
-#**FAIL**
+**Fail**
 ```js
 import Foo from 'Foo'
 
 console.log('Foo is: %j', Foo)
 ```
 
-#**PASS**
+**Pass**
 ```js
 import Foo from "Foo"
 
@@ -144,7 +144,7 @@ console.log("Foo is: %j", Foo)
 
 Up to three allowed. Two empty lines are not enough to clearly partition major sections of a module (e.g. after all `import ...`).
 
-#**FAIL**
+**Fail**
 ```js
 import Foo from "Foo"
 
@@ -153,7 +153,7 @@ import Foo from "Foo"
 
 Foo.bar()
 ```
-#**PASS**
+**Pass**
 ```js
 import Foo from "Foo"
 
@@ -179,7 +179,7 @@ import { compose, filter } from "ramda"
 
 
 
-#**FAIL**
+**Fail**
 ```js
 import * as Foo from "Foo"
 ```
@@ -189,7 +189,7 @@ import * as Foo from "Foo"
 
 We use `import` syntax so no need for `require` anymore.
 
-#**FAIL**
+**Fail**
 ```js
 const F = require("ramda")
 ```
@@ -198,7 +198,7 @@ const F = require("ramda")
 
 > Functional programming works better with known and explicit parameters. Also, having an undefined number of parameters does not work well with currying.
 
-**FAIL**
+**Fail**
 
 ```js
 const sum = () => {
@@ -209,7 +209,7 @@ const sum = () => {
 sum(1, 2, 3)
 ```
 
-**PASS**
+**Pass**
 
 ```js
 const sum (numbers) =>
@@ -226,7 +226,7 @@ const args = node.arguments
 
 Further reading: https://github.com/joshburgess/not-awesome-es6-classes/[Not Awesome: ES6 Classes; A curated list of resources on why ES6 (aka ES2015) classes are NOT awesome]
 
-**FAIL**
+**Fail**
 
 ```js
 class Polygon {
@@ -237,7 +237,7 @@ class Polygon {
 }
 ```
 
-**PASS**
+**Pass**
 
 ```js
 const polygon = (height, width) => ({
@@ -252,13 +252,13 @@ const polygon = (height, width) => ({
 
 Further reading: https://github.com/google/google-api-nodejs-client/issues/375[Avoid using delete operator]
 
-**FAIL**
+**Fail**
 ```js
 delete foo
 delete foo.bar
 delete foo[bar]
 ```
-**PASS**
+**Pass**
 ```js
 import F from "ramda"
 
@@ -272,7 +272,7 @@ const fooWithoutField = F.omit([bar], foo)
 
 Probably what you should do is use a https://gist.github.com/staltz/868e7e9bc2a7b8c1f754[functional reactive programming] library: https://github.com/cujojs/most[`most`], https://github.com/Reactive-Extensions/RxJS[`rxjs`].
 
-**FAIL**
+**Fail**
 
 ```js
 import EventEmitter from "events"
@@ -280,7 +280,7 @@ import EventEmitter from "events"
 
 ### `fp/no-get-set`
 
-**FAIL**
+**Fail**
 ```js
 const person = {
   name: 'Some Name',
@@ -306,7 +306,7 @@ person.__defineSetter__("name", function (name) {
   this.name = name.trim();
 })
 ```
-**PASS**
+**Pass**
 ```js
 import F from "ramda"
 
@@ -328,14 +328,14 @@ const setAge = (age, person) =>
 
 > If you want to program as if your variables are immutable, part of the answer is to not allow your variables to be reassigned. By not allowing the use of let and var, variables that you declared may not be reassigned.
 
-**FAIL**
+**Fail**
 ```js
 let a = 1
 let b = 2,
     c = 3
 let d
 ```
-**PASS**
+**Pass**
 ```js
 const a = 1
 const b = 2,
@@ -345,7 +345,7 @@ const b = 2,
 ### `fp/no-loops`
 > Loops, such as for or while loops, work well when using a procedural paradigm. In functional programming, recursion or implementation agnostic operations like map, filter and reduce are preferred.
 
-**FAIL**
+**Fail**
 ```js
 const result = []
 const elements = [1, 2, 3]
@@ -365,7 +365,7 @@ while (n < 100) {
   n *= 2
 }
 ```
-**PASS**
+**Pass**
 ```js
 const xs = [1, 2, 3]
 
@@ -382,7 +382,7 @@ const doubleBlast (n) =>
 
 > When doing functional programming, you want to avoid having stateful objects and instead use simple JavaScript objects.
 
-**FAIL**
+**Fail**
 ```js
 const object = {
   numbers: [1, 2, 3],
@@ -393,7 +393,7 @@ const object = {
 
 object.sum()
 ```
-**PASS**
+**Pass**
 ```js
 const sum = (numbers) =>
   numbers.reduce((a, b) => a + b)
