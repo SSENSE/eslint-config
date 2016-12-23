@@ -273,7 +273,7 @@ const b = 2,
 #### `fp/no-loops`
 > Loops, such as for or while loops, work well when using a procedural paradigm. In functional programming, recursion or implementation agnostic operations like map, filter and reduce are preferred.
 
-#### Fail
+##### Fail
 ```
 const result = [];
 const elements = [1, 2, 3];
