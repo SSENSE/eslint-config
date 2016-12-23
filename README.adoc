@@ -42,21 +42,19 @@ Simply put the following in your `package.json` (http://eslint.org/docs/user-gui
 
 ## Plugins / Extends
 
-* Extends the https://github.com/airbnb/javascript[AirBnB rules]
+#### Rules of AirBnB (https://github.com/airbnb/javascript[↗])
 
-* Uses plugin https://github.com/benmosher/eslint-plugin-import[`import`]
+We extend the AirBnB rules for historical reasons. Our configuration will continue to evolve and may not be based on it one day if we eventually disable or adjust too much of it via overrides.
 
-  Providesjjjj rules that help prevent import bugs and enforces style.
+#### Uses plugin `import` (https://github.com/benmosher/eslint-plugin-import[↗])
+Provides rules that help prevent import bugs and enforces style.
 
-* Uses plugin https://github.com/jfmengels/eslint-plugin-fp[`fp`]
+#### Uses plugin `fp` (https://github.com/jfmengels/eslint-plugin-fp[↗])
+Provides rules that help enforce functional programming.
+* http://blog.wolksoftware.com/the-rise-of-functional-programming-and-the-death-of-angularjs[The rise of functional programming & the decline of Angular 2.0]
 
-  Provides rules that help enforce functional programming.
-
-  * http://blog.wolksoftware.com/the-rise-of-functional-programming-and-the-death-of-angularjs[The rise of functional programming & the decline of Angular 2.0]
-
-* Uses plugin https://github.com/vuejs/eslint-plugin-vue[`vue`]
-
-  Currently, the sole purpose of having this plugin is to parse https://vuejs.org/v2/guide/single-file-components.html[`.vue` files]. Also, it https://github.com/vuejs/eslint-plugin-vue/issues/1[does not support eslint's `--fix` feature].
+#### Uses plugin `vue` (https://github.com/vuejs/eslint-plugin-vue[↗])
+Currently, the sole purpose of having this plugin is to parse https://vuejs.org/v2/guide/single-file-components.html[`.vue` files]. Also, it https://github.com/vuejs/eslint-plugin-vue/issues/1[does not support eslint's `--fix` feature].
 
 
 
