@@ -28,21 +28,28 @@ npm install --save-dev \
 
 ## Usage
 
-There are two configurations available: client or server. The main difference between client/server is that client requires the `vue` plugin and does not regulate `this` usage because `Vue` relies on it heavily unfortunately. Unless you are writing Vue code, use the server configuration (or just the default).
+There are two configurations available: "client" or "server". The main difference between them is that client requires the `vue` plugin and does not regulate `this` usage because `Vue` relies on it heavily (unfortunately). Unless you are writing Vue code, use the server configuration (or just the default). By default "server" is used.
 
-By default "server" is used.
+To select a configuration you want to use simply add it into your `package.json` (http://eslint.org/docs/user-guide/configuring#extending-configuration-files[see official docs for more information]).
 
-* client (`extends: "ssense/client"`)
-* server (`extends: "ssense/server"`)
-* default (`extends: "ssense"`, uses server)
-
-Once you've selected the configuration you want to use simply add it into your `package.json` (http://eslint.org/docs/user-guide/configuring#extending-configuration-files[see official docs for more information]).
+Use the default config (`server`):
 
 ```
   "eslintConfig": {
     "extends": "ssense"
   }
 ```
+
+Use a specialized config:
+
+```
+  "eslintConfig": {
+    "extends": "ssense/SPECIALIZATION"
+  }
+```
+
+`SPECIALIZATION` may be one of `server`, `client`:
+
 
 
 
