@@ -65,15 +65,15 @@ Simply put the following in your `package.json` (http://eslint.org/docs/user-gui
 ### `semi`
 
 Forbidden. +
-+
+
 Refactoring is harder. +
-+
+
 The act of changing/moving code  is made tedious by constantly baby sitting removal/addition of semicolons. For example: transitioning between `() => (...)` / `() => {...}`, moving the last `.then`/`.catch`/ `.foo` in a pipeline up or appending to it, etc.. +
-+
+
 Reading and writing is harder. +
-+
+
 JavaScript is a syntactically verbose language. Semicolons make it worse yet. Reading code with semicolons is objectively more fatiguing than code without given the reduction in visual noise. For writing, a day of coding with semicolons wears more on the fingers/hand than code without. +
-+
+
 Further reading +
 * http://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi[ASI rules]
 * http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding[An open letter to JavaScript leaders regarding Semicolons]
