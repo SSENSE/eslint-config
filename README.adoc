@@ -111,12 +111,16 @@ Some languages treat single/double as different types (Java, Haskell, PureScript
 
 ##### Fail
 ```js
-console.log('foobar')
+import Foo from 'Foo'
+
+console.log('Foo is: %j', Foo)
 ```
 
 ##### Pass
 ```js
-console.log("foobar")
+import Foo from "Foo"
+
+console.log("Foo is: %j", Foo)
 ```
 
 ### `no-multiple-empty-lines`
