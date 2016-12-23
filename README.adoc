@@ -4,8 +4,6 @@
 
 # SSENSE JavaScript Style Guide
 
-JavaScript code standards at SSENSE
-
 toc::[]
 
 
