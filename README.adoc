@@ -125,7 +125,7 @@ Up to three allowed. Two empty lines are not enough to clearly partition major s
 
 ##### Fail
 ```js
-import Foo from 'Foo'
+import Foo from "Foo"
 
 
 
@@ -134,7 +134,7 @@ Foo.bar()
 ```
 ##### Pass
 ```js
-import Foo from 'Foo'
+import Foo from "Foo"
 
 
 
@@ -146,10 +146,10 @@ Foo.bar()
 Instead of relying on ad-hoc namespaces we should always write modules that support using `default` for this functionality; that is consumers being able to do either of:
 
 ```js
-import F from 'ramda'
+import F from "ramda"
 ```
 ```js
-import { compose, filter } from 'ramda'
+import { compose, filter } from "ramda"
 ```
 
 * This is more like CommonJS which makes transition from `require` easier.
@@ -160,7 +160,7 @@ import { compose, filter } from 'ramda'
 
 ##### Fail
 ```js
-import * as Foo from 'Foo'
+import * as Foo from "Foo"
 ```
 
 
@@ -180,24 +180,23 @@ const F = require("ramda")
 #### Fail
 
 ```js
-function sum() {
-  const numbers = Array.prototype.slice.call(arguments);
-  return numbers.reduce((a, b) => a + b);
+const sum = () => {
+  const numbers = Array.prototype.slice.call(arguments)
+  return numbers.reduce((a, b) => a + b)
 }
 
-sum(1, 2, 3);
+sum(1, 2, 3)
 ```
 
 #### Pass
 
 ```js
-function sum(numbers) {
-  return numbers.reduce((a, b) => a + b);
-}
+const sum (numbers) =>
+  numbers.reduce((a, b) => a + b)
 
-sum([1, 2, 3]);
+sum([1, 2, 3])
 
-var args = node.arguments;
+const args = node.arguments
 ```
 
 ### `no-class`
@@ -210,9 +209,9 @@ Further reading: https://github.com/joshburgess/not-awesome-es6-classes/[Not Awe
 
 ```js
 class Polygon {
-  constructor(height, width) {
-    this.height = height;
-    this.width = width;
+  constructor (height, width) {
+    this.height = height
+    this.width = width
   }
 }
 ```
@@ -220,12 +219,10 @@ class Polygon {
 #### Pass
 
 ```js
-function polygon(height, width) {
-  return {
-    height: height,
-    width: width
-  };
-}
+const polygon = (height, width) => ({
+  height: height,
+  width: width,
+})
 ```
 
 ### `fp/no-delete`
@@ -236,28 +233,28 @@ Also, https://github.com/google/google-api-nodejs-client/issues/375[Avoid using 
 
 #### Fail
 ```js
-delete foo;
-delete foo.bar;
-delete foo[bar];
+delete foo
+delete foo.bar
+delete foo[bar]
 ```
 #### Pass
 ```js
-var _ = require('lodash/fp');
+import F from "ramda"
 
-var fooWithoutBar = _.omit('bar', foo);
-var fooWithoutField = _.omit(bar, foo);
+const fooWithoutBar = F.omit(["bar"], foo)
+const fooWithoutField = F.omit([bar], foo)
 ```
 
 ### `fp/no-events`
 
 > The use of EventEmitter with the events module provided by Node.js promotes implicit side-effects by emitting and listening to events. Instead of events, you should prefer activating the wanted effects by calling the functions you wish to use explicitly.
 
-And/or use a functional reactive programming library instead: https://github.com/cujojs/most[`most`], https://github.com/Reactive-Extensions/RxJS[`rxjs`].
+Probably what you should do is use a https://gist.github.com/staltz/868e7e9bc2a7b8c1f754[functional reactive programming] library: https://github.com/cujojs/most[`most`], https://github.com/Reactive-Extensions/RxJS[`rxjs`].
 
 #### Fail
 
 ```js
-import EventEmitter from 'events';
+import EventEmitter from "events"
 ```
 
 ### `fp/no-get-set`
@@ -266,48 +263,44 @@ import EventEmitter from 'events';
 ```js
 const person = {
   name: 'Some Name',
-  get age() {
-    return this._age;
+  get age () {
+    return this._age
   },
-  set age(n) {
+  set age (n) {
     if (n < 0) {
-      this._age = 0;
+      this._age = 0
     } else if (n > 100) {
-      this._age = 100;
+      this._age = 100
     } else {
-      this._age = n;
+      this._age = n
     }
   }: 20
 };
 
-person.__defineGetter__('name', function() {
-  return this.name || 'John Doe';
-});
+person.__defineGetter__("name", function () {
+  return this.name || "John Doe";
+})
 
-person.__defineSetter__('name', function(name) {
+person.__defineSetter__("name", function (name) {
   this.name = name.trim();
-});
+})
 ```
 #### Pass
 ```js
+import F from "ramda"
+
 const person = {
-  name: 'Some Name',
-  age: 20
-};
-
-function clamp(n, min, max) {
-  if (n <= min) {
-    return min;
-  }
-  if (n >= max) {
-    return max;
-  }
-  return n;
+  name: "Some Name",
+  age: 20,
 }
 
-function setAge(age, person) {
-  return Object.assign({}, person, {age: clamp(age, 0, 100)});
-}
+const clamp = (n, min, max) =>
+  n <= min ? min :
+  n >= max ? max :
+             n
+
+const setAge = (age, person) =>
+  F.merge(person, { age: clamp(age, 0, 100) })
 ```
 
 ### `fp/no-let`
@@ -316,16 +309,16 @@ function setAge(age, person) {
 
 #### Fail
 ```js
-let a = 1;
+let a = 1
 let b = 2,
-    c = 3;
-let d;
+    c = 3
+let d
 ```
 #### Pass
 ```js
-const a = 1;
+const a = 1
 const b = 2,
-      c = 3;
+      c = 3
 ```
 
 ### `fp/no-loops`
@@ -333,48 +326,41 @@ const b = 2,
 
 #### Fail
 ```js
-const result = [];
-const elements = [1, 2, 3];
+const result = []
+const elements = [1, 2, 3]
 
 for (let i = 0; i < elements.length; i++) {
   if (elements[i] > 2) {
-    result.push(elements[i]);
+    result.push(elements[i])
   }
 }
 
 for (element in elements) {
-  result.push(element * 10);
-}
-
-for (element of elements) {
-  result.push(element * 10);
+  result.push(element * 10)
 }
 
 while (n < 100) {
-  result.push(n);
-  n *= 2;
+  result.push(n)
+  n *= 2
 }
 
 do {
-  result.push(n);
-  n *= 2;
-} while (n < 100);
+  result.push(n)
+  n *= 2
+} while (n < 100)
 ```
 #### Pass
 ```js
-const elements = [1, 2, 3];
+const elements = [1, 2, 3]
 
-const result = elements.filter(element => element > 2);
+elements.filter(element => element > 2)
 
-const result = elements.map(element => element * 10);
+elements.map(element => element * 10)
 
-function doubleThemAll(n) {
-  if (n >= 100) {
-    return [];
-  }
-  return [n].concat(doubleThemAll(n * 2));
-}
-const result = doubleThemAll(n);
+const doubleBlast (n) =>
+  n >= 100
+    ? []
+    : [n].concat(doubleBlast(n * 2))
 ```
 ### `fp/no-this`
 
@@ -384,18 +370,17 @@ const result = doubleThemAll(n);
 ```js
 const object = {
   numbers: [1, 2, 3],
-  sum: function() {
-    return this.numbers.reduce((a, b) => a + b, 0);
-  }
+  sum: () => (
+    this.numbers.reduce((a, b) => a + b, 0)
+  ),
 }
 
-object.sum();
+object.sum()
 ```
 #### Pass
 ```js
-function sum(numbers) {
-  return numbers.reduce((a, b) => a + b);
-}
+const sum = (numbers) =>
+  numbers.reduce((a, b) => a + b)
 
-sum([1, 2, 3]);
+sum([1, 2, 3])
 ```
