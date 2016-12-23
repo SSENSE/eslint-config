@@ -30,7 +30,7 @@ npm install --save-dev \
 
 In `package.json`, One of:
 
-```
+```json
   "eslintConfig": {
     "extends": "ssense"
   }
@@ -38,12 +38,12 @@ In `package.json`, One of:
 
 (Defaults to `server`)
 
-```
+```json
   "eslintConfig": {
     "extends": "ssense/server"
   }
 ```
-```
+```json
   "eslintConfig": {
     "extends": "ssense/client"
   }
