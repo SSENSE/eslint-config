@@ -105,11 +105,11 @@ by aliasing our `export` with  `export default`.
 
 ### `import/no-commonjs`
 
-  Mixing `require` with `import` in one module or codebase is jarring at best.
+Mixing `require` with `import` in one module or codebase is jarring at best.
 
 ### `fp/no-arguments`
 
-  > Functional programming works better with known and explicit parameters. Also, having an undefined number of parameters does not work well with currying.
+> Functional programming works better with known and explicit parameters. Also, having an undefined number of parameters does not work well with currying.
 
 #### Fail
 
@@ -135,8 +135,6 @@ var args = node.arguments;
 ```
 
 ### `no-class`
-
-We forbid ES2015 Class syntax.
 
 > Classes are nice tools to use when programming with the object-oriented paradigm, as they hold internal state and give access to methods on the instances. In functional programming, having stateful objects is more harmful than helpful, and should be replaced by the use of pure functions.
 
