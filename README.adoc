@@ -49,6 +49,7 @@ Provides rules that help prevent import bugs and enforces style.
 
 #### Uses plugin `fp` (https://github.com/jfmengels/eslint-plugin-fp[↗])
 Provides rules that help enforce functional programming.
+
 * http://blog.wolksoftware.com/the-rise-of-functional-programming-and-the-death-of-angularjs[The rise of functional programming & the decline of Angular 2.0]
 
 #### Uses plugin `vue` (https://github.com/vuejs/eslint-plugin-vue[↗])
