@@ -29,6 +29,38 @@ npm install --save-dev \
 
 
 
+## Usage
+
+Simply put the following in your `package.json` (http://eslint.org/docs/user-guide/configuring#extending-configuration-files[see official docs for more information]).
+
+```
+  "eslintConfig": {
+    "extends": "ssense"
+  }
+```
+
+
+
+## Plugins / Extends
+
+* Extends the https://github.com/airbnb/javascript[AirBnB rules]
+
+* Uses plugin https://github.com/benmosher/eslint-plugin-import[`import`]
+
+  Providesjjjj rules that help prevent import bugs and enforces style.
+
+* Uses plugin https://github.com/jfmengels/eslint-plugin-fp[`fp`]
+
+  Provides rules that help enforce functional programming.
+
+  * http://blog.wolksoftware.com/the-rise-of-functional-programming-and-the-death-of-angularjs[The rise of functional programming & the decline of Angular 2.0]
+
+* Uses plugin https://github.com/vuejs/eslint-plugin-vue[`vue`]
+
+  Currently, the sole purpose of having this plugin is to parse https://vuejs.org/v2/guide/single-file-components.html[`.vue` files]. Also, it https://github.com/vuejs/eslint-plugin-vue/issues/1[does not support eslint's `--fix` feature].
+
+
+
 ## Rules
 
 #### `semi`
@@ -309,34 +341,3 @@ function sum(numbers) {
 
 sum([1, 2, 3]);
 ```
-
-
-
-## Usage
-
-Simply put the following in your `package.json` (http://eslint.org/docs/user-guide/configuring#extending-configuration-files[see official docs for more information]).
-
-```
-  "eslintConfig": {
-    "extends": "ssense"
-  }
-```
-
-
-## Plugins / Extends
-
-* Extends the https://github.com/airbnb/javascript[AirBnB rules]
-
-* Uses plugin https://github.com/benmosher/eslint-plugin-import[`import`]
-
-  Providesjjjj rules that help prevent import bugs and enforces style.
-
-* Uses plugin https://github.com/jfmengels/eslint-plugin-fp[`fp`]
-
-  Provides rules that help enforce functional programming.
-
-  * http://blog.wolksoftware.com/the-rise-of-functional-programming-and-the-death-of-angularjs[The rise of functional programming & the decline of Angular 2.0]
-
-* Uses plugin https://github.com/vuejs/eslint-plugin-vue[`vue`]
-
-  Currently, the sole purpose of having this plugin is to parse https://vuejs.org/v2/guide/single-file-components.html[`.vue` files]. Also, it https://github.com/vuejs/eslint-plugin-vue/issues/1[does not support eslint's `--fix` feature].
