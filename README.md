@@ -2,6 +2,25 @@
 
 JavaScript code standards at SSENSE
 
+
+## Installation
+```
+npm install --save-dev eslint eslint-config-ssense
+```
+
+Because of the [current inability for sharable configs](https://github.com/eslint/eslint/issues/3458) to supply their dependencies you will also need to:
+
+```
+npm install --save-dev \
+  babel-eslint \
+  eslint-config-airbnb-base \
+  eslint-plugin-import \
+  eslint-plugin-fp \
+  eslint-plugin-vue
+```
+
+
+
 ## Rules
 
 1. `semi`
@@ -50,22 +69,6 @@ JavaScript code standards at SSENSE
   * This is simpler for developers because they have fewer options.
   * This is easier to read; `* as ...` scattered multiple times throughout imports is noisy.
 
-
-## Installation
-```
-npm install --save-dev eslint eslint-config-ssense
-```
-
-Because of the [current inability for sharable configs](https://github.com/eslint/eslint/issues/3458) to supply their dependencies you will also need to:
-
-```
-npm install --save-dev \
-  babel-eslint \
-  eslint-config-airbnb-base \
-  eslint-plugin-import \
-  eslint-plugin-fp \
-  eslint-plugin-vue
-```
 
 
 ## Usage
