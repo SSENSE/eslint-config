@@ -75,6 +75,7 @@ Reading and writing is harder. +
 JavaScript is a syntactically verbose language. Semicolons make it worse yet. Reading code with semicolons is objectively more fatiguing than code without given the reduction in visual noise. For writing, a day of coding with semicolons wears more on the fingers/hand than code without. +
 
 Further reading +
+
 * http://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi[ASI rules]
 * http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding[An open letter to JavaScript leaders regarding Semicolons]
 * http://inimino.org/~inimino/blog/javascript_semicolons[JavaScript Semicolon Insertion; Everything you need to know]
@@ -82,40 +83,38 @@ Further reading +
 
 ### `quotes`
 
-  Double.
+Double. +
 
-  Some languages treat single/double as different types (Java, Haskell, PureScript, ...), don't even have single quotes (Clojure), or idiomatically use double (HTML). It is therefore better (Assuming a polyglot programmer) for habit building and retention to use double quotes as well in JavaScript.
+Some languages treat single/double as different types (Java, Haskell, PureScript, ...), don't even have single quotes (Clojure), or idiomatically use double (HTML). It is therefore better (Assuming a polyglot programmer) for habit building and retention to use double quotes as well in JavaScript.
 
 ### `no-multiple-empty-lines`
 
-  Up to three allowed. Two empty lines are not enough to clearly partition major sections of a module (e.g. after all `import ...`).
+Up to three allowed. Two empty lines are not enough to clearly partition major sections of a module (e.g. after all `import ...`).
 
 ### `import/no-namespace`
 
-  Yes.
+```
+import * as Foo from 'bar'
+```
+Is a misfeature of the new JS module syntax. Instead of relying on this we should always write modules that support:
+```
+import Foo from 'bar'
+```
+by aliasing our `export` with  `export default`.
 
-  ```
-  import * as Foo from 'bar'
-  ```
-  Is a misfeature of the new JS module syntax. Instead of relying on this we should always write modules that support:
-  ```
-  import Foo from 'bar'
-  ```
-  by aliasing our `export` with  `export default`.
-
-  * This is more like CommonJS which makes transition from `require` easier.
-  * This is simpler for developers because they have fewer options.
-  * This is easier to read; `* as ...` scattered multiple times throughout imports is noisy.
+* This is more like CommonJS which makes transition from `require` easier.
+* This is simpler for developers because they have fewer options.
+* This is easier to read; `* as ...` scattered multiple times throughout imports is noisy.
 
 ### `import/no-commonjs`
 
-  No. Mixing `require` with `import` in one module or codebase is jarring at best.
+  Mixing `require` with `import` in one module or codebase is jarring at best.
 
 ### `fp/no-arguments`
 
   > Functional programming works better with known and explicit parameters. Also, having an undefined number of parameters does not work well with currying.
 
-### Fail
+#### Fail
 
 ```
 function sum() {
@@ -126,7 +125,7 @@ function sum() {
 sum(1, 2, 3);
 ```
 
-### Pass
+#### Pass
 
 ```
 function sum(numbers) {
@@ -146,7 +145,7 @@ We forbid ES2015 Class syntax.
 
 Further reading: https://github.com/joshburgess/not-awesome-es6-classes/[Not Awesome: ES6 Classes; A curated list of resources on why ES6 (aka ES2015) classes are NOT awesome]
 
-### Fail
+#### Fail
 
 ```
 class Polygon {
@@ -157,7 +156,7 @@ class Polygon {
 }
 ```
 
-### Pass
+#### Pass
 
 ```
 function polygon(height, width) {
@@ -174,13 +173,13 @@ function polygon(height, width) {
 
 Also, https://github.com/google/google-api-nodejs-client/issues/375[Avoid using delete operator].
 
-### Fail
+#### Fail
 ```
 delete foo;
 delete foo.bar;
 delete foo[bar];
 ```
-### Pass
+#### Pass
 ```
 var _ = require('lodash/fp');
 
@@ -194,7 +193,7 @@ var fooWithoutField = _.omit(bar, foo);
 
 And/or use a functional reactive programming library instead: https://github.com/cujojs/most[`most`], https://github.com/Reactive-Extensions/RxJS[`rxjs`].
 
-### Fail
+#### Fail
 
 ```
 import EventEmitter from 'events';
@@ -202,7 +201,7 @@ import EventEmitter from 'events';
 
 ### `fp/no-get-set`
 
-### Fail
+#### Fail
 ```
 const person = {
   name: 'Some Name',
@@ -228,7 +227,7 @@ person.__defineSetter__('name', function(name) {
   this.name = name.trim();
 });
 ```
-### Pass
+#### Pass
 ```
 const person = {
   name: 'Some Name',
@@ -254,14 +253,14 @@ function setAge(age, person) {
 
 > If you want to program as if your variables are immutable, part of the answer is to not allow your variables to be reassigned. By not allowing the use of let and var, variables that you declared may not be reassigned.
 
-### Fail
+#### Fail
 ```
 let a = 1;
 let b = 2,
     c = 3;
 let d;
 ```
-### Pass
+#### Pass
 ```
 const a = 1;
 const b = 2,
@@ -271,7 +270,7 @@ const b = 2,
 ### `fp/no-loops`
 > Loops, such as for or while loops, work well when using a procedural paradigm. In functional programming, recursion or implementation agnostic operations like map, filter and reduce are preferred.
 
-### Fail
+#### Fail
 ```
 const result = [];
 const elements = [1, 2, 3];
@@ -300,7 +299,7 @@ do {
   n *= 2;
 } while (n < 100);
 ```
-### Pass
+#### Pass
 ```
 const elements = [1, 2, 3];
 
@@ -320,7 +319,7 @@ const result = doubleThemAll(n);
 
 > When doing functional programming, you want to avoid having stateful objects and instead use simple JavaScript objects.
 
-### Fail
+#### Fail
 ```
 const object = {
   numbers: [1, 2, 3],
@@ -331,7 +330,7 @@ const object = {
 
 object.sum();
 ```
-### Pass
+#### Pass
 ```
 function sum(numbers) {
   return numbers.reduce((a, b) => a + b);
