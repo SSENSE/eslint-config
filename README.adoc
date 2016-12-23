@@ -256,14 +256,14 @@ function setAge(age, person) {
 
 > If you want to program as if your variables are immutable, part of the answer is to not allow your variables to be reassigned. By not allowing the use of let and var, variables that you declared may not be reassigned.
 
-#### Fail
+##### Fail
 ```
 let a = 1;
 let b = 2,
     c = 3;
 let d;
 ```
-#### Pass
+##### Pass
 ```
 const a = 1;
 const b = 2,
@@ -322,7 +322,7 @@ const result = doubleThemAll(n);
 
 > When doing functional programming, you want to avoid having stateful objects and instead use simple JavaScript objects.
 
-#### Fail
+##### Fail
 ```
 const object = {
   numbers: [1, 2, 3],
@@ -333,7 +333,7 @@ const object = {
 
 object.sum();
 ```
-#### Pass
+##### Pass
 ```
 function sum(numbers) {
   return numbers.reduce((a, b) => a + b);
