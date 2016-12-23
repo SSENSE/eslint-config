@@ -13,7 +13,7 @@ JavaScript code standards at SSENSE
 npm install --save-dev eslint eslint-config-ssense
 ```
 
-Because of the [current inability for sharable configs]https://github.com/eslint/eslint/issues/3458) to supply their dependencies you will also need to:
+Because of the https://github.com/eslint/eslint/issues/3458[current inability for sharable configs] to supply their dependencies you will also need to:
 
 ```
 npm install --save-dev \
