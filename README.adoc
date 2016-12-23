@@ -38,22 +38,34 @@ Simply put the following in your `package.json` (http://eslint.org/docs/user-gui
 
 
 
-## Plugins / Extends
+## Plugins
+
+#### `fp` (https://github.com/jfmengels/eslint-plugin-fp[↗])
+Provides rules that help enforce functional programming.
+
+##### Talks around FP
+* https://www.infoq.com/presentations/Value-Values[The Value of Values] – Rich Hickey
+* https://www.infoq.com/presentations/Are-We-There-Yet-Rich-Hickey[Are we there yet?] – Rich Hickey
+* https://www.youtube.com/watch?v=DMtwq3QtddY[The Functional Final Frontier] – David Nolen
+* https://www.youtube.com/watch?v=mS264h8KGwk[Immutability, interactivity & JavaScript] – David Nolen
+
+##### Writings around FP
+
+* https://github.com/stoeffel/awesome-fp-js[Awesome FP JS] list
+* http://blog.wolksoftware.com/the-rise-of-functional-programming-and-the-death-of-angularjs[The rise of functional programming & the decline of Angular 2.0]
+
+#### `import` (https://github.com/benmosher/eslint-plugin-import[↗])
+Provides rules that help prevent import bugs and enforces style.
+
+#### `vue` (https://github.com/vuejs/eslint-plugin-vue[↗])
+Currently, the sole purpose of having this plugin is to parse https://vuejs.org/v2/guide/single-file-components.html[`.vue` files]. Also, it https://github.com/vuejs/eslint-plugin-vue/issues/1[does not support] eslint's `--fix` feature.
+
+## Extends
 
 #### Rules of AirBnB (https://github.com/airbnb/javascript[↗])
 
 We extend the AirBnB rules for historical reasons. Our configuration will continue to evolve and may not be based on it one day if we eventually disable or adjust too much of it via overrides.
 
-#### Uses plugin `import` (https://github.com/benmosher/eslint-plugin-import[↗])
-Provides rules that help prevent import bugs and enforces style.
-
-#### Uses plugin `fp` (https://github.com/jfmengels/eslint-plugin-fp[↗])
-Provides rules that help enforce functional programming.
-
-* http://blog.wolksoftware.com/the-rise-of-functional-programming-and-the-death-of-angularjs[The rise of functional programming & the decline of Angular 2.0]
-
-#### Uses plugin `vue` (https://github.com/vuejs/eslint-plugin-vue[↗])
-Currently, the sole purpose of having this plugin is to parse https://vuejs.org/v2/guide/single-file-components.html[`.vue` files]. Also, it https://github.com/vuejs/eslint-plugin-vue/issues/1[does not support] eslint's `--fix` feature.
 
 
 
