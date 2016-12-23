@@ -6,15 +6,28 @@ JavaScript code standards at SSENSE
 
 1. `semi`
 
-  * Refactoring is harder
-    The act of changing/moving code  is made tedious by constantly baby sitting removal/addition of semicolons. For example: transitioning between `() => (...)` / `() => {...}`, moving the last `.then`/`.catch`/ `.foo` in a pipeline up or appending to it, etc..
-  * Read/Write is harder
-    JavaScript is a syntactically verbose language. Semicolons make it worse yet. Reading code with semicolons is objectively more fatiguing than code without given the reduction in visual noise. For writing, a day of coding with semicolons wears more on the fingers/hand than code without.
+  Never.
+
+  Refactoring is harder.
+
+  The act of changing/moving code  is made tedious by constantly baby sitting removal/addition of semicolons. For example: transitioning between `() => (...)` / `() => {...}`, moving the last `.then`/`.catch`/ `.foo` in a pipeline up or appending to it, etc..
+
+  Reading and writing is harder.
+
+  JavaScript is a syntactically verbose language. Semicolons make it worse yet. Reading code with semicolons is objectively more fatiguing than code without given the reduction in visual noise. For writing, a day of coding with semicolons wears more on the fingers/hand than code without.
+
+  Further reading
+
   * [ASI rules](http://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi)
   * [An open letter to JavaScript leaders regarding Semicolons](http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding)
   * [JavaScript Semicolon Insertion; Everything you need to know](http://inimino.org/~inimino/blog/javascript_semicolons)
   * [Semicolons in JavaScript are optional](http://mislav.net/2010/05/semicolons/)
 
+1. `quotes`
+
+  Double.
+
+  Some languages treat single/double as different types (Java, Haskell, PureScript, ...), don't even have single quotes (Clojure), or idiomatically use double (HTML). It is therefore better (Assuming a polyglot programmer) for habit building and retention to use double quotes as well in JavaScript.
 
 
 ## Installation
