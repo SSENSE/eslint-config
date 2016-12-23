@@ -28,7 +28,7 @@ npm install --save-dev \
 
 ## Usage
 
-In `package.json`, One of:
+In `package.json`:
 
 ```json
   "eslintConfig": {
