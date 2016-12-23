@@ -2,7 +2,7 @@
 :toc-title:
 :toclevels: 99
 
-# eslint-config-ssense
+# SSENSE JavaScript Style Guide
 
 JavaScript code standards at SSENSE
 
