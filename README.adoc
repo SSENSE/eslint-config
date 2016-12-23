@@ -59,13 +59,14 @@ There are two specialized configurations available, `client` or `server`. `clien
 #### `fp` (https://github.com/jfmengels/eslint-plugin-fp[↗])
 Provides rules that help enforce functional programming.
 
-##### Talks around FP
+**Talks around FP**
+
 * https://www.infoq.com/presentations/Value-Values[The Value of Values] – Rich Hickey
 * https://www.infoq.com/presentations/Are-We-There-Yet-Rich-Hickey[Are we there yet?] – Rich Hickey
 * https://www.youtube.com/watch?v=DMtwq3QtddY[The Functional Final Frontier] – David Nolen
 * https://www.youtube.com/watch?v=mS264h8KGwk[Immutability, interactivity & JavaScript] – David Nolen
 
-##### Writings around FP
+**Writings around FP**
 
 * https://github.com/stoeffel/awesome-fp-js[Awesome FP JS] list
 * http://blog.wolksoftware.com/the-rise-of-functional-programming-and-the-death-of-angularjs[The rise of functional programming & the decline of Angular 2.0]
