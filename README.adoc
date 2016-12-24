@@ -116,9 +116,7 @@ it("foobar", () => {
 
 ## `quotes`
 
-Double. +
-
-Some languages treat single/double as different types (Java, Haskell, PureScript, ...), don't even have single quotes (Clojure), or idiomatically use double (HTML). It is therefore better (Assuming a polyglot programmer) for habit building and retention to use double quotes as well in JavaScript.
+We use double quotes because it is more consistent with other languages. For example some treat single/double as different types (Java, Haskell, PureScript, ...), don't even have single quotes (Clojure), or idiomatically use double (HTML). It is therefore better (assuming a polyglot programmer) for habit building and retention to use double quotes as well in JavaScript.
 
 **Fail**
 ```js
