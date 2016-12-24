@@ -221,7 +221,7 @@ sum([1, 2, 3])
 const args = node.arguments
 ```
 
-### `no-class`
+### `fp/no-class`
 
 > Classes are nice tools to use when programming with the object-oriented paradigm, as they hold internal state and give access to methods on the instances. In functional programming, having stateful objects is more harmful than helpful, and should be replaced by the use of pure functions.
 
