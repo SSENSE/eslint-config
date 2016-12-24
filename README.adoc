@@ -212,8 +212,9 @@ sum(1, 2, 3)
 **Pass**
 
 ```js
-const sum (numbers) =>
+const sum (numbers) => (
   numbers.reduce((a, b) => a + b)
+)
 
 sum([1, 2, 3])
 
@@ -315,13 +316,15 @@ const person = {
   age: 20,
 }
 
-const clamp = (n, min, max) =>
+const clamp = (n, min, max) => (
   n <= min ? min :
   n >= max ? max :
              n
+)
 
-const setAge = (age, person) =>
+const setAge = (age, person) => (
   F.merge(person, { age: clamp(age, 0, 100) })
+)
 ```
 
 ## `fp/no-let`
@@ -369,14 +372,19 @@ while (n < 100) {
 ```js
 const xs = [1, 2, 3]
 
-xs.filter(x => x > 2)
+xs.filter((x) => (
+  x > 2
+))
 
-xs.map(x => x * 10)
+xs.map((x) => (
+  x * 10
+))
 
-const doubleBlast (n) =>
+const doubleBubble (n) => (
   n >= 100
     ? []
-    : [n].concat(doubleBlast(n * 2))
+    : [n].concat(doubleBubble(n * 2))
+)
 ```
 ## `fp/no-this`
 
@@ -395,8 +403,9 @@ object.sum()
 ```
 **Pass**
 ```js
-const sum = (numbers) =>
-  numbers.reduce((a, b) => a + b)
+const sum = (numbers) => (
+  numbers.reduce((a, b) => a + b, 0)
+)
 
 sum([1, 2, 3])
 ```
