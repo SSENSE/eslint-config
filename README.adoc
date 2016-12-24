@@ -8,7 +8,7 @@ toc::[]
 
 
 
-## Installation
+# Installation
 ```
 npm install --save-dev eslint eslint-config-ssense
 ```
@@ -26,7 +26,7 @@ npm install --save-dev \
 
 
 
-## Usage
+# Usage
 
 Edit your `package.json`
 
@@ -55,9 +55,9 @@ For general projects (or also server-side) you can use the root config which is 
 
 
 
-## Plugins
+# Plugins
 
-#### `fp` https://github.com/jfmengels/eslint-plugin-fp[↗]
+### `fp` https://github.com/jfmengels/eslint-plugin-fp[↗]
 Provides rules that help enforce functional programming.
 
 **Talks around FP**
@@ -72,24 +72,24 @@ Provides rules that help enforce functional programming.
 * https://github.com/stoeffel/awesome-fp-js[Awesome FP JS] list
 * http://blog.wolksoftware.com/the-rise-of-functional-programming-and-the-death-of-angularjs[The rise of functional programming & the decline of Angular 2.0]
 
-#### `import` https://github.com/benmosher/eslint-plugin-import[↗]
+### `import` https://github.com/benmosher/eslint-plugin-import[↗]
 Provides rules that help prevent import bugs and enforces style.
 
-#### `vue` https://github.com/vuejs/eslint-plugin-vue[↗]
+### `vue` https://github.com/vuejs/eslint-plugin-vue[↗]
 Currently, the sole purpose of having this plugin is to parse https://vuejs.org/v2/guide/single-file-components.html[`.vue` files]. Also, it https://github.com/vuejs/eslint-plugin-vue/issues/1[does not support] eslint's `--fix` feature.
 
 ## Extends
 
-#### Rules of AirBnB https://github.com/airbnb/javascript[↗]
+### Rules of AirBnB https://github.com/airbnb/javascript[↗]
 
 We extend the AirBnB rules for historical reasons. Our configuration will continue to evolve and may not be based on it one day if we eventually disable or adjust too much of it via overrides.
 
 
 
 
-## Rules
+# Rules
 
-### `semi`
+## `semi`
 
 We do not use semicolons because omitting them reduces visual noise, and so our code is more legible. Also, for writing, a day of coding with semicolons wears more on the fingers/hand than code without. +
 
@@ -113,7 +113,7 @@ it("foobar", () => {
 })
 ```
 
-### `quotes`
+## `quotes`
 
 Double. +
 
@@ -133,7 +133,7 @@ import Foo from "Foo"
 console.log("Foo is: %j", Foo)
 ```
 
-### `no-multiple-empty-lines`
+## `no-multiple-empty-lines`
 
 Up to three allowed. Two empty lines are not enough to clearly partition major sections of a module (e.g. after all `import ...`).
 
@@ -155,7 +155,7 @@ import Foo from "Foo"
 Foo.bar()
 ```
 
-### `import/no-namespace`
+## `import/no-namespace`
 
 Instead of relying on ad-hoc namespaces we should always write modules that support using `default` for this functionality; that is consumers being able to do either of:
 
@@ -182,7 +182,7 @@ import Foo from "Foo"
 ```
 
 
-### `import/no-commonjs`
+## `import/no-commonjs`
 
 We use `import` syntax so no need for `require` anymore.
 
@@ -195,7 +195,7 @@ const F = require("ramda")
 import F from "ramda"
 ```
 
-### `fp/no-arguments`
+## `fp/no-arguments`
 
 > Functional programming works better with known and explicit parameters. Also, having an undefined number of parameters does not work well with currying.
 
@@ -221,7 +221,7 @@ sum([1, 2, 3])
 const args = node.arguments
 ```
 
-### `fp/no-class`
+## `fp/no-class`
 
 > Classes are nice tools to use when programming with the object-oriented paradigm, as they hold internal state and give access to methods on the instances. In functional programming, having stateful objects is more harmful than helpful, and should be replaced by the use of pure functions.
 
@@ -247,7 +247,7 @@ const polygon = (height, width) => ({
 })
 ```
 
-### `fp/no-delete`
+## `fp/no-delete`
 
 > delete is an operator to remove fields from an object or elements from an array. This purposely mutates data, which is not wanted when doing functional programming.
 
@@ -267,7 +267,7 @@ const fooWithoutBar = F.omit(["bar"], foo)
 const fooWithoutField = F.omit([bar], foo)
 ```
 
-### `fp/no-events`
+## `fp/no-events`
 
 > The use of EventEmitter with the events module provided by Node.js promotes implicit side-effects by emitting and listening to events. Instead of events, you should prefer activating the wanted effects by calling the functions you wish to use explicitly.
 
@@ -279,7 +279,7 @@ Probably what you should do is use a https://gist.github.com/staltz/868e7e9bc2a7
 import EventEmitter from "events"
 ```
 
-### `fp/no-get-set`
+## `fp/no-get-set`
 
 **Fail**
 ```js
@@ -325,7 +325,7 @@ const setAge = (age, person) =>
   F.merge(person, { age: clamp(age, 0, 100) })
 ```
 
-### `fp/no-let`
+## `fp/no-let`
 
 > If you want to program as if your variables are immutable, part of the answer is to not allow your variables to be reassigned. By not allowing the use of let and var, variables that you declared may not be reassigned.
 
@@ -343,7 +343,7 @@ const b = 2,
       c = 3
 ```
 
-### `fp/no-loops`
+## `fp/no-loops`
 > Loops, such as for or while loops, work well when using a procedural paradigm. In functional programming, recursion or implementation agnostic operations like map, filter and reduce are preferred.
 
 **Fail**
@@ -379,7 +379,7 @@ const doubleBlast (n) =>
     ? []
     : [n].concat(doubleBlast(n * 2))
 ```
-### `fp/no-this`
+## `fp/no-this`
 
 > When doing functional programming, you want to avoid having stateful objects and instead use simple JavaScript objects.
 
