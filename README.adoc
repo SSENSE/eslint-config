@@ -28,29 +28,30 @@ npm install --save-dev \
 
 ## Usage
 
-In `package.json`:
+Edit your `package.json`.
 
-```json
-  "eslintConfig": {
-    "extends": "ssense"
-  }
-```
-
-(Defaults to `server`)
-
-```json
-  "eslintConfig": {
-    "extends": "ssense/server"
-  }
-```
+For client-side projects:
 ```json
   "eslintConfig": {
     "extends": "ssense/client"
   }
 ```
+`/client` specializations are that it permits browser globals, requires the `vue` plugin, and does not regulate `this` usage. The latter point is because Vue relies on `this` heavily. Only use `/client` if you are writing Vue code.
 
-There are two specialized configurations available, `client` or `server`. `client` requires the `vue` plugin and does not regulate `this` usage because Vue relies on it heavily (unfortunately). Unless you are writing Vue code do not use `client`. By default `server` is used.
+For server-side projects:
+```json
+  "eslintConfig": {
+    "extends": "ssense/server"
+  }
+```
+`/server` specializations are that it permits `node` globals.
 
+For general projects (or also server-side) you can use the root config which is the same as `server`:
+```json
+  "eslintConfig": {
+    "extends": "ssense"
+  }
+```
 
 
 
