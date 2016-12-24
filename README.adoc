@@ -28,7 +28,7 @@ npm install --save-dev \
 
 ## Usage
 
-Edit your `package.json`.
+Edit your `package.json`
 
 For client-side projects:
 ```json
@@ -46,7 +46,7 @@ For server-side projects:
 ```
 `/server` specializations are that it permits `node` globals.
 
-For general projects (or also server-side) you can use the root config which is the same as `server`:
+For general projects (or also server-side) you can use the root config which is the same as `/server`:
 ```json
   "eslintConfig": {
     "extends": "ssense"
