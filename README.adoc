@@ -90,15 +90,7 @@ We extend the AirBnB rules for historical reasons. Our configuration will contin
 
 ### `semi`
 
-Forbidden. +
-
-Refactoring is harder. +
-
-The act of changing/moving code  is made tedious by constantly baby sitting removal/addition of semicolons. For example: transitioning between `() => (...)` / `() => {...}`, moving the last `.then`/`.catch`/ `.foo` in a pipeline up or appending to it, etc.. +
-
-Reading and writing is harder. +
-
-JavaScript is a syntactically verbose language. Semicolons make it worse yet. Reading code with semicolons is objectively more fatiguing than code without given the reduction in visual noise. For writing, a day of coding with semicolons wears more on the fingers/hand than code without. +
+We do not use semicolons because omitting them reduces visual noise, and so our code is more legible. Also, for writing, a day of coding with semicolons wears more on the fingers/hand than code without. +
 
 Further reading +
 
@@ -183,6 +175,10 @@ import { compose, filter } from "ramda"
 ```js
 import * as Foo from "Foo"
 ```
+**Pass**
+```js
+import Foo from "Foo"
+```
 
 
 ### `import/no-commonjs`
@@ -192,6 +188,10 @@ We use `import` syntax so no need for `require` anymore.
 **Fail**
 ```js
 const F = require("ramda")
+```
+**Pass**
+```js
+import F from "ramda"
 ```
 
 ### `fp/no-arguments`
