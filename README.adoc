@@ -134,7 +134,7 @@ console.log("Foo is: %j", Foo)
 
 ## `no-multiple-empty-lines`
 
-Up to three allowed. Two empty lines are not enough to clearly partition major sections of a module (e.g. after all `import ...`).
+Up to three allowed. Two empty lines are not enough to clearly partition major sections of a module.
 
 **Fail**
 ```js
