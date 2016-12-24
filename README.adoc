@@ -55,6 +55,14 @@ For general projects (or also server-side) you can use the root config which is 
 
 
 
+# Extends
+
+### AirBnB https://github.com/airbnb/javascript[↗]
+
+We extend the AirBnB rules for historical reasons. Our configuration will continue to evolve and may not be based on it one day if we eventually disable or adjust too much of it via overrides.
+
+
+
 # Plugins
 
 ### `fp` https://github.com/jfmengels/eslint-plugin-fp[↗]
@@ -77,13 +85,6 @@ Provides rules that help prevent import bugs and enforces style.
 
 ### `vue` https://github.com/vuejs/eslint-plugin-vue[↗]
 Currently, the sole purpose of having this plugin is to parse https://vuejs.org/v2/guide/single-file-components.html[`.vue` files]. Also, it https://github.com/vuejs/eslint-plugin-vue/issues/1[does not support] eslint's `--fix` feature.
-
-# Extends
-
-### AirBnB https://github.com/airbnb/javascript[↗]
-
-We extend the AirBnB rules for historical reasons. Our configuration will continue to evolve and may not be based on it one day if we eventually disable or adjust too much of it via overrides.
-
 
 
 
