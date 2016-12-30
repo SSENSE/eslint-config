@@ -403,8 +403,9 @@ const object = {
 
 object.sum()
 ```
-**Pass**  
-Avoid `this` so that function composition and functions-as-values is possible.
+**Pass**
+
+Avoid `this` so that function composition and functions-as-values works.
 ```js
 const object = {
   numbers: [1, 2, 3],
