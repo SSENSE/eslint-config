@@ -390,6 +390,8 @@ const doubleBubble (n) => (
 
 > When doing functional programming, you want to avoid having stateful objects and instead use simple JavaScript objects.
 
+Also, `this` actively thwarts function composition and functions-as-values (e.g. arguments to higher order functions) because when executed they would lose their `this` context. The canonical solution would be [`.bind`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind) but that burdens the programmer and degrades readability.
+
 **Fail**
 ```js
 const object = {
@@ -402,6 +404,16 @@ const object = {
 object.sum()
 ```
 **Pass**
+Avoid `this` so that function composition and functions-as-values is possible.
+```js
+const object = {
+  numbers: [1, 2, 3],
+  sum: () => (
+    object.numbers.reduce((a, b) => a + b, 0)
+  ),
+}
+```
+Or better, think functionally, separating general functions from data.
 ```js
 const sum = (numbers) => (
   numbers.reduce((a, b) => a + b, 0)
