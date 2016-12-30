@@ -403,7 +403,7 @@ const object = {
 
 object.sum()
 ```
-**Pass**
+**Pass**  
 Avoid `this` so that function composition and functions-as-values is possible.
 ```js
 const object = {
