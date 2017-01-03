@@ -57,7 +57,7 @@ For general projects (or also server-side) you can use the root config which is 
 
 # Extends
 
-### AirBnB https://github.com/airbnb/javascript[↗]
+### `airbnb-base` https://github.com/airbnb/javascript[↗]
 
 We extend the AirBnB rules for historical reasons. Our configuration will continue to evolve and may not be based on it one day if we eventually disable or adjust too much of it via overrides.
 
