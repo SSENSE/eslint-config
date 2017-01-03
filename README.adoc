@@ -76,6 +76,7 @@ Provides rules that help enforce functional programming.
 * https://www.youtube.com/watch?v=mS264h8KGwk[Immutability, interactivity & JavaScript] – David Nolen
 
 **Writings around FP**
+
 * https://medium.com/@chetcorcos/functional-programming-for-javascript-people-1915d8775504#.lhsxzh2b6[Functional Programming for JavaScript People]
 * http://blog.wolksoftware.com/the-rise-of-functional-programming-and-the-death-of-angularjs[The rise of functional programming & the decline of Angular 2.0]
 * https://github.com/stoeffel/awesome-fp-js[Awesome FP JS] list
