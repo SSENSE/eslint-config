@@ -1,0 +1,427 @@
+:toc: macro
+:toc-title:
+:toclevels: 99
+
+# SSENSE JavaScript Style Guide
+
+toc::[]
+
+
+
+# Installation
+```
+npm install --save-dev eslint eslint-config-ssense
+```
+
+Because of the https://github.com/eslint/eslint/issues/3458[current inability for sharable configs] to supply their dependencies you will also need to:
+
+```
+npm install --save-dev \
+  babel-eslint \
+  eslint-config-airbnb-base \
+  eslint-plugin-import \
+  eslint-plugin-fp \
+  eslint-plugin-vue
+```
+
+
+
+# Usage
+
+Edit your `package.json`
+
+For client-side projects:
+```json
+  "eslintConfig": {
+    "extends": "ssense/client"
+  }
+```
+`/client` specializations are that it permits browser globals, requires the `vue` plugin, and does not regulate `this` usage. The latter point is because Vue relies on `this` heavily. Only use `/client` if you are writing Vue code.
+
+For server-side projects:
+```json
+  "eslintConfig": {
+    "extends": "ssense/server"
+  }
+```
+`/server` specializations are that it permits `node` globals.
+
+For general projects (or also server-side) you can use the root config which is the same as `/server`:
+```json
+  "eslintConfig": {
+    "extends": "ssense"
+  }
+```
+
+
+
+# Extends
+
+### `airbnb-base` https://github.com/airbnb/javascript[↗]
+
+We extend the AirBnB rules for historical reasons. Our configuration will continue to evolve and may not be based on it one day if we eventually disable or adjust too much of it via overrides.
+
+
+
+# Plugins
+
+### `fp` https://github.com/jfmengels/eslint-plugin-fp[↗]
+Provides rules that help enforce functional programming.
+
+**Talks around FP**
+
+* https://www.infoq.com/presentations/Value-Values[The Value of Values] – Rich Hickey
+* https://www.infoq.com/presentations/Are-We-There-Yet-Rich-Hickey[Are we there yet?] – Rich Hickey
+* https://www.youtube.com/watch?v=DMtwq3QtddY[The Functional Final Frontier] – David Nolen
+* https://www.youtube.com/watch?v=mS264h8KGwk[Immutability, interactivity & JavaScript] – David Nolen
+
+**Writings around FP**
+
+* https://medium.com/@chetcorcos/functional-programming-for-javascript-people-1915d8775504#.lhsxzh2b6[Functional Programming for JavaScript People]
+* http://blog.wolksoftware.com/the-rise-of-functional-programming-and-the-death-of-angularjs[The rise of functional programming & the decline of Angular 2.0]
+* https://github.com/stoeffel/awesome-fp-js[Awesome FP JS] list
+
+### `import` https://github.com/benmosher/eslint-plugin-import[↗]
+Provides rules that help prevent import bugs and enforces style.
+
+### `vue` https://github.com/vuejs/eslint-plugin-vue[↗]
+Currently, the sole purpose of having this plugin is to parse https://vuejs.org/v2/guide/single-file-components.html[`.vue` files]. Also, it https://github.com/vuejs/eslint-plugin-vue/issues/1[does not support] eslint's `--fix` feature.
+
+
+
+# Rules
+
+This section contains documentation about certain (not all) rules we enforce. Each rule section contains rationale and pass/fail examples. Over time we will complete exhaustive documentation. So far we have focused on significant deviations from our AirBnB inheritance.
+
+## `semi`
+
+We do not use semicolons because omitting them reduces visual noise, and so our code is more legible. Also, for writing, a day of coding with semicolons wears more on the fingers/hand than code without. +
+
+Further reading +
+
+* http://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi[ASI rules]
+* http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding[An open letter to JavaScript leaders regarding Semicolons]
+* http://inimino.org/~inimino/blog/javascript_semicolons[JavaScript Semicolon Insertion; Everything you need to know]
+* http://mislav.net/2010/05/semicolons/[Semicolons in JavaScript are optional]
+
+**Fail**
+```js
+it("foobar", () => {
+  assert(1, foo(1));
+});
+```
+**Pass**
+```js
+it("foobar", () => {
+  assert(1, foo(1))
+})
+```
+
+## `quotes`
+
+We use double quotes because it is more consistent with other languages. For example some treat single/double as different types (Java, Haskell, PureScript, ...), don't even have single quotes (Clojure), or idiomatically use double (HTML). It is therefore better (assuming a polyglot programmer) for habit building and retention to use double quotes as well in JavaScript.
+
+**Fail**
+```js
+import Foo from 'Foo'
+
+console.log('Foo is: %j', Foo)
+```
+
+**Pass**
+```js
+import Foo from "Foo"
+
+console.log("Foo is: %j", Foo)
+```
+
+## `no-multiple-empty-lines`
+
+Up to three allowed. Two empty lines are not enough to clearly partition major sections of a module.
+
+**Fail**
+```js
+import Foo from "Foo"
+
+
+
+
+Foo.bar()
+```
+**Pass**
+```js
+import Foo from "Foo"
+
+
+
+Foo.bar()
+```
+
+## `import/no-namespace`
+
+Instead of relying on ad-hoc namespaces we should always write modules that support using `default` for this functionality; that is consumers being able to do either of:
+
+```js
+import F from "ramda"
+```
+```js
+import { compose, filter } from "ramda"
+```
+
+* This is more like CommonJS which makes transition from `require` easier.
+* This is simpler for developers because they have fewer options.
+* This is easier to read; `* as ...` scattered multiple times throughout imports is noisy.
+
+
+
+**Fail**
+```js
+import * as Foo from "Foo"
+```
+**Pass**
+```js
+import Foo from "Foo"
+```
+
+
+## `import/no-commonjs`
+
+We use `import` syntax so no need for `require` anymore.
+
+**Fail**
+```js
+const F = require("ramda")
+```
+**Pass**
+```js
+import F from "ramda"
+```
+
+## `fp/no-arguments`
+
+> Functional programming works better with known and explicit parameters. Also, having an undefined number of parameters does not work well with currying.
+
+**Fail**
+
+```js
+const sum = () => {
+  const numbers = Array.prototype.slice.call(arguments)
+  return numbers.reduce((a, b) => a + b)
+}
+
+sum(1, 2, 3)
+```
+
+**Pass**
+
+```js
+const sum (numbers) => (
+  numbers.reduce((a, b) => a + b)
+)
+
+sum([1, 2, 3])
+
+const args = node.arguments
+```
+
+## `fp/no-class`
+
+> Classes are nice tools to use when programming with the object-oriented paradigm, as they hold internal state and give access to methods on the instances. In functional programming, having stateful objects is more harmful than helpful, and should be replaced by the use of pure functions.
+
+Further reading: https://github.com/joshburgess/not-awesome-es6-classes/[Not Awesome: ES6 Classes; A curated list of resources on why ES6 (aka ES2015) classes are NOT awesome]
+
+**Fail**
+
+```js
+class Polygon {
+  constructor (height, width) {
+    this.height = height
+    this.width = width
+  }
+}
+```
+
+**Pass**
+
+```js
+const polygon = (height, width) => ({
+  height: height,
+  width: width,
+})
+```
+
+## `fp/no-delete`
+
+> delete is an operator to remove fields from an object or elements from an array. This purposely mutates data, which is not wanted when doing functional programming.
+
+Further reading: https://github.com/google/google-api-nodejs-client/issues/375[Avoid using delete operator]
+
+**Fail**
+```js
+delete foo
+delete foo.bar
+delete foo[bar]
+```
+**Pass**
+```js
+import F from "ramda"
+
+const fooWithoutBar = F.omit(["bar"], foo)
+const fooWithoutField = F.omit([bar], foo)
+```
+
+## `fp/no-events`
+
+> The use of EventEmitter with the events module provided by Node.js promotes implicit side-effects by emitting and listening to events. Instead of events, you should prefer activating the wanted effects by calling the functions you wish to use explicitly.
+
+Probably what you should do is use a https://gist.github.com/staltz/868e7e9bc2a7b8c1f754[functional reactive programming] library: https://github.com/cujojs/most[`most`], https://github.com/Reactive-Extensions/RxJS[`rxjs`].
+
+**Fail**
+
+```js
+import EventEmitter from "events"
+```
+
+## `fp/no-get-set`
+
+**Fail**
+```js
+const person = {
+  name: 'Some Name',
+  get age () {
+    return this._age
+  },
+  set age (n) {
+    if (n < 0) {
+      this._age = 0
+    } else if (n > 100) {
+      this._age = 100
+    } else {
+      this._age = n
+    }
+  }: 20
+};
+
+person.__defineGetter__("name", function () {
+  return this.name || "John Doe";
+})
+
+person.__defineSetter__("name", function (name) {
+  this.name = name.trim();
+})
+```
+**Pass**
+```js
+import F from "ramda"
+
+const person = {
+  name: "Some Name",
+  age: 20,
+}
+
+const clamp = (n, min, max) => (
+  n <= min ? min :
+  n >= max ? max :
+             n
+)
+
+const setAge = (age, person) => (
+  F.merge(person, { age: clamp(age, 0, 100) })
+)
+```
+
+## `fp/no-let`
+
+> If you want to program as if your variables are immutable, part of the answer is to not allow your variables to be reassigned. By not allowing the use of let and var, variables that you declared may not be reassigned.
+
+**Fail**
+```js
+let a = 1
+let b = 2,
+    c = 3
+let d
+```
+**Pass**
+```js
+const a = 1
+const b = 2,
+      c = 3
+```
+
+## `fp/no-loops`
+> Loops, such as for or while loops, work well when using a procedural paradigm. In functional programming, recursion or implementation agnostic operations like map, filter and reduce are preferred.
+
+**Fail**
+```js
+const result = []
+const elements = [1, 2, 3]
+
+for (let i = 0; i < elements.length; i++) {
+  if (elements[i] > 2) {
+    result.push(elements[i])
+  }
+}
+
+for (element in elements) {
+  result.push(element * 10)
+}
+
+while (n < 100) {
+  result.push(n)
+  n *= 2
+}
+```
+**Pass**
+```js
+const xs = [1, 2, 3]
+
+xs.filter((x) => (
+  x > 2
+))
+
+xs.map((x) => (
+  x * 10
+))
+
+const doubleBubble (n) => (
+  n >= 100
+    ? []
+    : [n].concat(doubleBubble(n * 2))
+)
+```
+## `fp/no-this`
+
+> When doing functional programming, you want to avoid having stateful objects and instead use simple JavaScript objects.
+
+Also, `this` actively thwarts function composition and functions-as-values (e.g. arguments to higher order functions) because when executed they would lose their `this` context. The canonical solution would be https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind[`.bind`] but that burdens the programmer and degrades readability.
+
+**Fail**
+```js
+const object = {
+  numbers: [1, 2, 3],
+  sum: () => (
+    this.numbers.reduce((a, b) => a + b, 0)
+  ),
+}
+
+object.sum()
+```
+**Pass**
+
+Avoid `this` so that function composition and functions-as-values works.
+```js
+const object = {
+  numbers: [1, 2, 3],
+  sum: () => (
+    object.numbers.reduce((a, b) => a + b, 0)
+  ),
+}
+```
+Or better, think functionally, separating general functions from data.
+```js
+const sum = (numbers) => (
+  numbers.reduce((a, b) => a + b, 0)
+)
+
+sum([1, 2, 3])
+```
