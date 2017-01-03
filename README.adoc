@@ -91,6 +91,8 @@ Currently, the sole purpose of having this plugin is to parse https://vuejs.org/
 
 # Rules
 
+This section contains documentation about certain (not all) rules we enforce. Each rule section contains rationale and pass/fail examples. Over time we will complete exhaustive documentation. So far we have focused on significant deviations from our AirBnB inheritance.
+
 ## `semi`
 
 We do not use semicolons because omitting them reduces visual noise, and so our code is more legible. Also, for writing, a day of coding with semicolons wears more on the fingers/hand than code without. +
