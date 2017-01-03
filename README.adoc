@@ -391,7 +391,7 @@ const doubleBubble (n) => (
 
 > When doing functional programming, you want to avoid having stateful objects and instead use simple JavaScript objects.
 
-Also, `this` actively thwarts function composition and functions-as-values (e.g. arguments to higher order functions) because when executed they would lose their `this` context. The canonical solution would be [`.bind`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind) but that burdens the programmer and degrades readability.
+Also, `this` actively thwarts function composition and functions-as-values (e.g. arguments to higher order functions) because when executed they would lose their `this` context. The canonical solution would be https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind[`.bind`] but that burdens the programmer and degrades readability.
 
 **Fail**
 ```js
