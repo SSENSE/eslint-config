@@ -20,8 +20,7 @@ npm install --save-dev \
   babel-eslint \
   eslint-config-airbnb-base \
   eslint-plugin-import \
-  eslint-plugin-fp \
-  eslint-plugin-vue
+  eslint-plugin-fp
 ```
 
 
@@ -36,7 +35,7 @@ For client-side projects:
     "extends": "ssense/client"
   }
 ```
-`/client` specializations are that it permits browser globals, requires the `vue` plugin, and does not regulate `this` usage. The latter point is because Vue relies on `this` heavily. Only use `/client` if you are writing Vue code.
+`/client` specializations are that it permits browser globals.
 
 For server-side projects:
 ```json
@@ -83,9 +82,6 @@ Provides rules that help enforce functional programming.
 
 ### `import` https://github.com/benmosher/eslint-plugin-import[↗]
 Provides rules that help prevent import bugs and enforces style.
-
-### `vue` https://github.com/vuejs/eslint-plugin-vue[↗]
-Currently, the sole purpose of having this plugin is to parse https://vuejs.org/v2/guide/single-file-components.html[`.vue` files]. Also, it https://github.com/vuejs/eslint-plugin-vue/issues/1[does not support] eslint's `--fix` feature.
 
 
 
