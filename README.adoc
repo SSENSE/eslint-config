@@ -10,17 +10,18 @@ toc::[]
 
 # Installation
 ```
-npm install --save-dev eslint eslint-config-ssense
+yarn add --dev eslint eslint-config-ssense
 ```
 
 Because of the https://github.com/eslint/eslint/issues/3458[current inability for sharable configs] to supply their dependencies you will also need to:
 
 ```
-npm install --save-dev \
+yarn add --dev \
   babel-eslint \
   eslint-config-airbnb-base \
   eslint-plugin-import \
-  eslint-plugin-fp
+  eslint-plugin-fp \
+  eslint-plugin-flowtype
 ```
 
 

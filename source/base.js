@@ -1,5 +1,8 @@
 module.exports = {
-  extends: ["airbnb-base"],
+  extends: [
+    "airbnb-base",
+    "plugin:flowtype/recommended"
+  ],
 
   parser: "babel-eslint",
 
@@ -11,7 +14,7 @@ module.exports = {
       experimentalObjectRestSpread: true,
     },
   },
-  plugins: ["import", "fp"],
+  plugins: ["import", "fp", "flowtype"],
   env: {
     mocha: true,
     jest: true,
