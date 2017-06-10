@@ -4,7 +4,7 @@
   "description": "JavaScript code standards at SSENSE",
   "main": "index.js",
   "scripts": {
-    "postversion": "git push && git push --tags && npm publish"
+    "postversion": "git push && git push --tags && npm publish && yarn release"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,8 @@
   "homepage": "https://github.com/SSENSE/eslint-config#readme",
   "dependencies": {},
   "devDependencies": {
-    "eslint": "^3.19.0"
+    "eslint": "^3.19.0",
+    "release": "^1.2.3"
   },
   "peerDependencies": {
     "babel-eslint": "^7.2.3",
