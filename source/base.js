@@ -1,7 +1,10 @@
 module.exports = {
   extends: [
     "airbnb-base",
-    "plugin:flowtype/recommended"
+    "plugin:flowtype/recommended",
+    "prettier",
+    "prettier/flowtype",
+    "prettier/react",
   ],
 
   parser: "babel-eslint",
@@ -20,32 +23,6 @@ module.exports = {
     jest: true,
   },
   rules: {
-
-    // Disable rules handled by prettier
-
-    "arrow-parens": 0,
-    "indent": 0,
-    "max-len": 0,
-    "no-trailing-spaces": 0,
-    "no-multiple-empty-lines": 0
-    "semi": 0,
-    "quotes": 0,
-    "comma-dangle": 0,
-    "no-multiple-empty-lines": 0
-    "space-before-function-paren": 0,
-    "space-before-blocks": 0,
-    "operator-linebreak": 0,
-    "object-curly-spacing": 0,
-    "no-nested-ternary": 0,
-    "keyword-spacing": 0,
-    "space-infix-ops": 0,
-    "eol-last": 0,
-    "newline-per-chained-call": 0,
-    "padded-blocks": 0,
-    "space-in-parens": 0,
-    "array-bracket-spacing": 0,
-    "comma-style": 0,
-
     // Import
 
     "import/no-commonjs": 1,

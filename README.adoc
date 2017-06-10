@@ -19,6 +19,7 @@ Because of the https://github.com/eslint/eslint/issues/3458[current inability fo
 yarn add --dev \
   babel-eslint \
   eslint-config-airbnb-base \
+  eslint-config-prettier \
   eslint-plugin-import \
   eslint-plugin-fp \
   eslint-plugin-flowtype
