@@ -8,6 +8,15 @@ toc::[]
 
 
 
+# Features
+
+* functionally oriented
+* client and server flavours
+* https://github.com/facebook/flow[flowtype] support
+* https://github.com/prettier/prettier[prettier] support
+
+
+
 # Installation
 ```
 yarn add --dev eslint eslint-config-ssense
@@ -61,6 +70,14 @@ For general projects (or also server-side) you can use the root config which is 
 ### `airbnb-base` https://github.com/airbnb/javascript[↗]
 
 We extend the AirBnB rules for historical reasons. Our configuration will continue to evolve and may not be based on it one day if we eventually disable or adjust too much of it via overrides.
+
+### `prettier` https://github.com/prettier/eslint-config-prettier[↗]
+
+We disable all stylistic rules that prettier takes care of for us.
+
+### `flowtype` https://github.com/gajus/eslint-plugin-flowtype[↗]
+
+We enforce static typing at SSENSE and so extend flowtype eslint rules that help devlopers use flow.
 
 
 
