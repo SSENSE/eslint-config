@@ -8,20 +8,30 @@ toc::[]
 
 
 
+# Features
+
+* functionally oriented
+* client and server flavours
+* https://github.com/facebook/flow[flowtype] support
+* https://github.com/prettier/prettier[prettier] support
+
+
+
 # Installation
 ```
-npm install --save-dev eslint eslint-config-ssense
+yarn add --dev eslint eslint-config-ssense
 ```
 
 Because of the https://github.com/eslint/eslint/issues/3458[current inability for sharable configs] to supply their dependencies you will also need to:
 
 ```
-npm install --save-dev \
+yarn add --dev \
   babel-eslint \
   eslint-config-airbnb-base \
+  eslint-config-prettier \
   eslint-plugin-import \
   eslint-plugin-fp \
-  eslint-plugin-vue
+  eslint-plugin-flowtype
 ```
 
 
@@ -36,7 +46,7 @@ For client-side projects:
     "extends": "ssense/client"
   }
 ```
-`/client` specializations are that it permits browser globals, requires the `vue` plugin, and does not regulate `this` usage. The latter point is because Vue relies on `this` heavily. Only use `/client` if you are writing Vue code.
+`/client` specializations are that it permits browser globals.
 
 For server-side projects:
 ```json
@@ -61,6 +71,14 @@ For general projects (or also server-side) you can use the root config which is 
 
 We extend the AirBnB rules for historical reasons. Our configuration will continue to evolve and may not be based on it one day if we eventually disable or adjust too much of it via overrides.
 
+### `prettier` https://github.com/prettier/eslint-config-prettier[↗]
+
+We disable all stylistic rules that prettier takes care of for us.
+
+### `flowtype` https://github.com/gajus/eslint-plugin-flowtype[↗]
+
+We enforce static typing at SSENSE and so extend flowtype eslint rules that help devlopers use flow.
+
 
 
 # Plugins
@@ -83,9 +101,6 @@ Provides rules that help enforce functional programming.
 
 ### `import` https://github.com/benmosher/eslint-plugin-import[↗]
 Provides rules that help prevent import bugs and enforces style.
-
-### `vue` https://github.com/vuejs/eslint-plugin-vue[↗]
-Currently, the sole purpose of having this plugin is to parse https://vuejs.org/v2/guide/single-file-components.html[`.vue` files]. Also, it https://github.com/vuejs/eslint-plugin-vue/issues/1[does not support] eslint's `--fix` feature.
 
 
 

@@ -1,5 +1,11 @@
 module.exports = {
-  extends: ["airbnb-base"],
+  extends: [
+    "airbnb-base",
+    "plugin:flowtype/recommended",
+    "prettier",
+    "prettier/flowtype",
+    "prettier/react",
+  ],
 
   parser: "babel-eslint",
 
@@ -11,57 +17,45 @@ module.exports = {
       experimentalObjectRestSpread: true,
     },
   },
-  plugins: ["import", "fp"],
+  plugins: ["import", "fp", "flowtype"],
   env: {
-    mocha: true
+    mocha: true,
+    jest: true,
   },
   rules: {
-
-    // Misc
-
-    semi: [1, "never"],
-    quotes: [1, "double"],
-    "comma-dangle": [1, "only-multiline"],
-    "no-multiple-empty-lines": [1, { max: 3 }],
-
     // Import
 
-    "import/no-namespace": 1,
     "import/no-commonjs": 1,
     "import/no-extraneous-dependencies": [
       2,
       {
-        devDependencies: [
-          "**/*.test.js",
-          "**/*.spec.js",
-        ],
+        devDependencies: ["**/*.test.js", "**/*.spec.js"],
       },
     ],
     "import/order": [
       1,
       {
-        groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
+        groups: [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+        ],
         "newlines-between": "never",
       },
     ],
 
     // Functional Programming
 
-    "fp/no-arguments": 2,
-    "fp/no-class": 2,
-    "fp/no-delete": 2,
-    "fp/no-events": 2,
-    "fp/no-get-set": 2,
-    "fp/no-let": 2,
-    "fp/no-loops": 2,
-    "fp/no-this": 2,
-
-    // Disable
-
-    "space-before-function-paren": 0,
-    "operator-linebreak": 0,
-    "object-curly-spacing": 0,
-    "no-nested-ternary": 0,
+    "fp/no-arguments": 1,
+    "fp/no-class": 1,
+    "fp/no-delete": 1,
+    "fp/no-events": 1,
+    "fp/no-get-set": 1,
+    "fp/no-loops": 1,
+    "fp/no-this": 1,
 
     // Consider
 
